@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <%- include("./style.ejs"); %>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="content">
+            <% if (locals.user) { %>
+
+                <h3>
+                    <%= user.username %>
+                </h3>
+
+                <form method="post" action="/user/update/<%= id %>" id="form" class="form">
+                    <div>
+                        <h5 class="form-label">Username</h5>
+                        <input id="username" type="text" name="username" value="<%= user.username %>">
+                    </div>
+                    <div>
+                        <h5 class="form-label">Fullname</h5>
+                        <input id="fullname" type="text" name="fullname" value="<%= user.fullname %>">
+                    </div>
+                    <div>
+                        <h5 class="form-label">Email</h5>
+                        <input id="email" type="text" name="email" value="<%= user.email %>" readonly>
+                    </div>
+
+                    <div>
+                        <h5 class="form-label">Age</h5>
+                        <input id="age" type="text" name="age" value="<%= user.age %>">
+                    </div>
+
+                    <div class="form-submit">
+                        <button id="submit" type="submit">submit</button>
+                    </div>
+                </form>
+
+                <% } else { %>
+
+
+                    <h3><a href="/">Return home</a></h3>
+                    <h2>404 not found</h2>
+                    <p>user with id <%= id %> not exist</p>
+
+                    <% } %>
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

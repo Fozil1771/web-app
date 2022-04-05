@@ -1,0 +1,15 @@
+<div>
+
+    <a href="/">Return home</a>
+
+    <% if(errors){errors.forEach(function(error){%>
+
+        <div class="alert alert-danger">
+            <%= error.msg %>
+                <%= error.param %>
+        </div>
+
+
+        <% })} %>
+
+</div>
