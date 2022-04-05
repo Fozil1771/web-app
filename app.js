@@ -1,14 +1,10 @@
 const express = require('express')
-
-const path = require('path')
 const fs = require('fs')
 const app = express()
 const methodOverride = require('method-override')
 const bodyParser = require('body-parser')
 
-// pop up library
-// import swal from 'sweetalert';
-const swal = require('sweetalert')
+
 // validation
 const { body, validationResult } = require('express-validator');
 
@@ -124,10 +120,6 @@ app.get('/user/:id', function (req, res) {
     const founduser = users.find(user => user.id === Number(id))
     console.log(founduser)
 
-
-
-    // res.send(founduser)
-
     res.render('pages/edit', {
         id: id,
         user: founduser
@@ -165,8 +157,6 @@ app.post('/user/update/:id', (req, res) => {
     })
 
 
-    swal("Updated successfully")
-
     //finally save it
     saveUserData(updateUser)
 
@@ -200,6 +190,6 @@ app.get('/user/delete/:id', (req, res) => {
 
 
 //configure the server port
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
     console.log(`Server runs on port  ${process.env.PORT}`)
 })
